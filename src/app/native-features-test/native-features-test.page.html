@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Capacitor Features</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Camera Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Camera Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="takePicture()">Take Photo</ion-button>
+      <img *ngIf="capturedImage" [src]="capturedImage" />
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Clipboard Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Clipboard Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input label="Enter text to copy" labelPlacement="floating" [(ngModel)]="textToCopy"></ion-input>
+      </ion-item>
+      <ion-button  (click)="copyToClipboard()">Copy to Clipboard</ion-button>
+      <ion-button color="secondary" (click)="readFromClipboard()">Read Clipboard</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Device Info Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Device Info</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button  (click)="getDeviceInfo()">Get Device Info</ion-button>
+      <ion-card *ngIf="deviceInfo">
+        <p><strong>OS:</strong> {{ deviceInfo.operatingSystem }}</p>
+        <p><strong>Model:</strong> {{ deviceInfo.model }}</p>
+        <p><strong>Manufacturer:</strong> {{ deviceInfo.manufacturer }}</p>
+        <p><strong>Platform:</strong> {{ deviceInfo.platform }}</p>
+        <p><strong>UUID:</strong> {{ deviceInfo.uuid }}</p>
+        <p><strong>OS Version:</strong> {{ deviceInfo.osVersion }}</p>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Filesystem Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Filesystem Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-textarea labelPlacement="floating" label="Enter text to save" [(ngModel)]="fileContent"></ion-textarea>
+      </ion-item>
+      <ion-button (click)="writeFile()">Save to File</ion-button>
+      <ion-button color="secondary" (click)="readFile()">Read File</ion-button>
+      <ion-button color="danger" (click)="deleteFile()">Delete File</ion-button>
+      <ion-card *ngIf="savedContent">
+        <p>{{ savedContent }}</p>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Geolocation Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Geolocation Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="getCurrentLocation()">Get GPS Coordinates</ion-button>
+      <ion-card *ngIf="latitude !== null && longitude !== null">
+        <p><strong>Latitude:</strong> {{ latitude }}</p>
+        <p><strong>Longitude:</strong> {{ longitude }}</p>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Haptics Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Haptics Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="hapticVibration()">Vibrate</ion-button>
+      <ion-button color="secondary" (click)="hapticImpact()">Impact Feedback</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Network Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Network Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Status:</strong> {{ networkStatus }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Share Feature -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Share Feature</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input labelPlacement="floating" label="Title" [(ngModel)]="shareTitle"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" label="Text" [(ngModel)]="shareText"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" label="URL" [(ngModel)]="shareUrl"></ion-input>
+      </ion-item>
+      <ion-button expand="full" (click)="shareContent()">Share</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+
 
 @Component({
   selector: 'app-flight-list',
@@ -9,19 +9,9 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   standalone: false,
 })
 export class FlightListPage implements OnInit {
-  capturedImage: string | undefined;
-
-  constructor(private router: Router) {}
-
-  async takePicture() {
-    const image = await Camera.getPhoto({
-      quality: 90,
-      source: CameraSource.Camera, // Use 'CameraSource.Photos' to pick from gallery
-      resultType: CameraResultType.Base64,
-    });
-
-    this.capturedImage = `data:image/jpeg;base64,${image.base64String}`;
-  }
+  
+  constructor(private router: Router){}
+   
 
   flights = [
     {
@@ -54,6 +44,10 @@ export class FlightListPage implements OnInit {
     this.router.navigate(['/flight/booking'], {
       state: { data: { flight } }, // Pass the state here
     });
+  }
+
+  openNativeFeaturesTest(){
+    this.router.navigate(['/flight/native-features-test']);
   }
 
   ngOnInit() {}

@@ -19,10 +19,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./flight/flight.module').then((m) => m.FlightPageModule),
   },
+  {
+    path: 'native-features-test',
+    loadChildren: () => import('./native-features-test/native-features-test.module').then(m => m.NativeFeaturesTestPageModule)
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FlightAppRoutingModule {}
+export class FlightAppRoutingModule { }
