@@ -1,0 +1,7 @@
+{
+  "name": "flight-booking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
